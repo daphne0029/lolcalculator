@@ -5,7 +5,9 @@ include '../../includes/myRiotImporter.inc';
 $importer = new myRiotImporter();
 
 $output = $importer->import(array(
-  'champions' => true,
+  'champions' => false,
+  'runes' => false,
+  'items' => true,
 ));
 //echo "<pre>";
 header('Content-Type: application/json');
