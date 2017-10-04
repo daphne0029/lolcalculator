@@ -19,7 +19,15 @@ if (!class_exists('myRiotImporter')) {
       if($options['items']){
         $output['items'] = $this->importItems();
       }
+      if($options['masteries']){
+        $output['masteries'] = $this->importMasteries();
+      }
 
+      return $output;
+    }
+    public function importMasteries(){
+      $res = $this->riotAPI->getMasteries();
+      $output = $this->processmasteries($res);
       return $output;
     }
     public function  importItems(){
@@ -39,6 +47,13 @@ if (!class_exists('myRiotImporter')) {
       $output = $this->processchampions($res);
       //save
       return $output;
+    }
+    public function processmasteries($res){
+      foreach($res['data'] as $data){
+        $id = $data['id'];
+        $masteries[$id] = $this->getmasteries($data,$res['tree']);
+      }
+      return $masteries;
     }
     public function processitems($res){
       foreach($res['data'] as $data){
@@ -131,6 +146,23 @@ if (!class_exists('myRiotImporter')) {
       $items['effect'] = $effect;
       $items['stats'] = $data['stats'];
       return $items;
+    }
+    public function getmasteries($data,$tree){
+      $masteries['id'] = $data['id'];
+      $masteries['name'] = $data['name'];
+      $masteries['description'] = $data['description'];
+      $masteries['ranks'] = $data['ranks'];
+      $masteries['masteryTree'] = $data['masteryTree'];
+      for($i=0;$i<=5;$i++){
+        for($j=0;$j<=2;$j++){
+          $masteryID = (empty($tree[$masteries['masteryTree']][$i]['masteryTreeItems'][$j]['masteryId'])) ? null : $tree[$masteries['masteryTree']][$i]['masteryTreeItems'][$j]['masteryId'];
+          if($masteryID == $masteries['id']){
+            $masteries['level'] = $i;
+            $masteries['col'] = $j;
+          }
+        }
+      }
+      return $masteries;
     }
   }//close class myRiotImporter
 }//close if class exists

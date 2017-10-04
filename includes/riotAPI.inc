@@ -47,6 +47,13 @@ class riotAPI {
     $output = $this->sendCommand($url,$param);
     return $output;
   }
+  public function getMasteries(){
+    $url = 'https://na1.api.riotgames.com/lol/static-data/v3/masteries';
+    $param['locale'] = 'en_US';
+    $param['tags'] = 'all';
+    $output = $this->sendCommand($url,$param);
+    return $output;
+  }
 }
 
 

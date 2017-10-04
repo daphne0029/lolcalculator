@@ -6,8 +6,9 @@ $importer = new myRiotImporter();
 
 $output = $importer->import(array(
   'champions' => false,
-  'runes' => false,
-  'items' => true,
+  'runes' => true,
+  'items' => false,
+  'masteries' => false,
 ));
 //echo "<pre>";
 header('Content-Type: application/json');
