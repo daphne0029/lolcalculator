@@ -26,32 +26,36 @@ class riotAPI {
     $url = 'https://na1.api.riotgames.com//lol/static-data/v3/champions';
     $param['locale'] = 'en_US';
     $param['tags'] = 'all';
-    $output = $this->sendCommand($url,$param);
-    //$championAll = file_get_contents(ROOTPATH.'/allchampions.json');
-    //echo $championAll;
-    //$output = json_decode($championAll, true);
-    //echo json_encode($output);
+    //$output = $this->sendCommand($url,$param);
+    $championAll = file_get_contents(ROOTPATH.'/allchampions.json');
+    $output = json_decode($championAll, true);
     return $output;
   }
   public function getRunes(){
     $url = 'https://na1.api.riotgames.com/lol/static-data/v3/runes';
     $param['locale'] = 'en_US';
     $param['tags'] = 'all';
-    $output = $this->sendCommand($url,$param);
+    //$output = $this->sendCommand($url,$param);
+    $runesAll = file_get_contents(ROOTPATH.'/allrunes.json');
+    $output = json_decode($runesAll, true);
     return $output;
   }
   public function getItems(){
     $url = 'https://na1.api.riotgames.com/lol/static-data/v3/items';
     $param['locale'] = 'en_US';
     $param['tags'] = 'all';
-    $output = $this->sendCommand($url,$param);
+    //$output = $this->sendCommand($url,$param);
+    $itemsAll = file_get_contents(ROOTPATH.'/allitems.json');
+    $output = json_decode($itemsAll, true);
     return $output;
   }
   public function getMasteries(){
     $url = 'https://na1.api.riotgames.com/lol/static-data/v3/masteries';
     $param['locale'] = 'en_US';
     $param['tags'] = 'all';
-    $output = $this->sendCommand($url,$param);
+    //$output = $this->sendCommand($url,$param);
+    $masteriesAll = file_get_contents(ROOTPATH.'/allmasteries.json');
+    $output = json_decode($masteriesAll, true);
     return $output;
   }
 }

@@ -68,7 +68,7 @@ if (!class_exists('myRiotImporter')) {
       return $items;
     }
     public function processrunes($res){
-      //$count = 0;
+      //$count = 0;.
       foreach($res['data'] as $data){
         $id = $data['id'];
         if (in_array($id,$this->excludeRunes)) continue;
@@ -94,18 +94,18 @@ if (!class_exists('myRiotImporter')) {
       return $champions;
     }
     public function getchampgeninfo($data){
-      $info['champgeninfo']['champid'] = $data['id'];
-      $info['champgeninfo']['name'] = $data['name'];
-      $info['champgeninfo']['info'] = $data['info'];
+      $info['champid'] = $data['id'];
+      $info['name'] = $data['name'];
+      $info['info'] = $data['info'];
       //$info['champgeninfo']['tag'] = $data['tag'];
-      $info['champgeninfo']['title'] = $data['title'];
-      $info['champgeninfo']['allytips'] = $data['allytips'];
-      $info['champgeninfo']['enemytips'] = $data['enemytips'];
+      $info['title'] = $data['title'];
+      $info['allytips'] = $data['allytips'];
+      $info['enemytips'] = $data['enemytips'];
       return $info;
     }
     public function getchampstats($data){
       $data['stats']['champid'] = $data['id'];
-      $data['stats']['champN'] = $data['name'];
+      $data['stats']['champName'] = $data['name'];
       $info = $data['stats'];
       return $info;
     }
@@ -130,8 +130,8 @@ if (!class_exists('myRiotImporter')) {
       return $wantedRunes;
     }
     public function getitems($data,$id){
-      $items['itemID'] = $id;
-      $items['itemName'] = $data['name'];
+      $items['id'] = $id;
+      $items['name'] = $data['name'];
       $items['description'] = $data['description'];
       $tags = (empty($data['tags'])) ? NULL : $data['tags'];
       $items['tags'] = $tags;
