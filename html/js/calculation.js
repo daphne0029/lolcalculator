@@ -1,103 +1,122 @@
-(function(CalulationFactory){
-  CalulationFactory(lolcalculator);
+(function(CalculationFactory){
+  CalculationFactory(lolcalculator);
 }(function(lolcalculator){
-
+  var config = lolcalculator.config;
   var data = lolcalculator.data;
-
-  var calView = function(){
-    var view = lolcalculator.buildHeaderView('Calulation');
-    view += `<div class="body">
-      <button class="reselectbutton">Re-select a Champion</button>
-      <div class="championprofile">
-        <div class="championbackground">
-          <div class="shadowblock">
-            <div class="champinfo">
-              <img class="role" src="/assets/Roles/marksman.png" alt="marksman.png">
-              <div class="champname">Ashe</div>
-              <div class="champtitle">the Frost Archer</div>
-            </div>
-            <div class="generalinfo">
-              <div class="stats-area">
-                <span class="stats-title">Defense</span>
-                <div class="progress_bar">
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                </div>
-              </div>
-              <div class="stats-area">
-                <span class="stats-title">Attack</span>
-                <div class="progress_bar">
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                </div>
-              </div>
-              <div class="stats-area">
-                <span class="stats-title">Magic</span>
-                <div class="progress_bar">
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                </div>
-              </div>
-              <div class="stats-area">
-                <span class="stats-title">Difficulty</span>
-                <div class="progress_bar">
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg checked"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                  <div class="bg"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div class="footer">
-      </div>`;
-    return view;
+  lolcalculator.lib = {
+    calculation : {
+      attackspeed : null,
+      general : null,
+      offense : null,
+      regen : null,
+    },
   };
 
-  var CalEvents = function(){
-    console.log('binding calculation events');
-
-    $('.reselectbutton').click(function(){
-      lolcalculator.goTo('home');
-      console.log('going to home page');
-    });
-
+  lolcalculator.lib.calculation.offense = {
+    AttackDamagebyLevel : function(base,growth,level){
+      base = parseFloat(base);
+      growth = parseFloat(growth);
+      level = parseFloat(level);
+      var finalstats = 0;
+      finalstats = base + growth*(level-1)*(0.685+0.0175*level);
+      return finalstats.toFixed(2);
+    },
   };
 
-  lolcalculator.control.calculation.view.push(calView);
-  lolcalculator.control.calculation.events.push(CalEvents);
+  lolcalculator.lib.calculation.regen = {
+    HPbylevel : function(base,growth,level){
+      base = parseFloat(base);
+      growth = parseFloat(growth);
+      level = parseFloat(level);
+      var finalstats = 0;
+      finalstats = base + growth*(level-1)*(0.685+0.0175*level);
+      return finalstats.toFixed(3);
+    },
+    MPbylevel :function(base,growth,level){
+      base = parseFloat(base);
+      growth = parseFloat(growth);
+      level = parseFloat(level);
+      var finalstats = 0;
+      finalstats = base + growth*(level-1)*(0.685+0.0175*level);
+      return finalstats.toFixed(3);
+    },
+  };
+
+  lolcalculator.lib.calculation.general = {
+    HPbyLevel : function(base,growth,level){
+      base = parseFloat(base);
+      growth = parseFloat(growth);
+      level = parseFloat(level);
+      var finalstats = 0;
+      finalstats = base + growth*(level-1)*(0.685+0.0175*level);
+      return finalstats.toFixed(1);
+    },
+    MPbyLevel : function(base,growth,level){
+      base = parseFloat(base);
+      growth = parseFloat(growth);
+      level = parseFloat(level);
+      var finalstats = 0;
+      finalstats = base + growth*(level-1)*(0.685+0.0175*level);
+      return finalstats.toFixed(1);
+    },
+    ArmorbyLevel : function(base,growth,level){
+      base = parseFloat(base);
+      growth = parseFloat(growth);
+      level = parseFloat(level);
+      var finalArmor = 0;
+      finalArmor = base + growth*level;
+      return finalArmor.toFixed(1);
+    },
+    MRbyLevel : function(base,growth,level){
+      base = parseFloat(base);
+      growth = parseFloat(growth);
+      level = parseFloat(level);
+      var finalMP = 0;
+      finalMP = base + growth*level;
+      return finalMP.toFixed(1);
+    }
+  };
+
+lolcalculator.lib.calculation.attackspeed = {
+  ASwithItemBonus : function(offset,growth,level,itembonus){
+    offset = parseFloat(offset);
+    growth = parseFloat(growth);
+    level = parseFloat(level);
+    var finalAS = 0;
+    var levelbonus = 0;
+    var baseAS = 0;
+    baseAS = this.BaseAttackSpeed(offset);
+    levelbonus = this.bonusASbyLevel(growth,level);
+    finalAS = baseAS + (baseAS * (levelbonus+itembonus));
+    return finalAS.toFixed(3);
+  },
+  BaseAttackSpeed : function(offset){
+    offset = parseFloat(offset);
+    var baseAS = 0;
+    baseAS = 0.625/(1+offset);
+    return baseAS.toFixed(3);
+  },
+  ASbyLevel : function(offset,growth,level){
+    offset = parseFloat(offset);
+    growth = parseFloat(growth);
+    level = parseFloat(level);
+    var finalAS = 0;
+    var baseAS = 0;
+    var bonusAS = 0;
+    baseAS = parseFloat(this.BaseAttackSpeed(offset));
+    bonusAS = this.bonusASbyLevel(growth,level,baseAS);
+    finalAS = baseAS + (baseAS*bonusAS);
+    console.log("finalAS = " + finalAS);
+    return finalAS.toFixed(3);
+  },
+  bonusASbyLevel : function(growth,level){
+    growth = parseFloat(growth);
+    level = parseFloat(level);
+    var bonusAS;
+    bonusAS = growth*(7/400*(Math.pow(level,2)-1)+267/400*(level-1));
+    return bonusAS.toFixed(3);
+  }
+};
+
   return lolcalculator;
-}))
+}));

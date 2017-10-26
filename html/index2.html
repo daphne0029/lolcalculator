@@ -1,0 +1,33 @@
+<head>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/cf07a56654.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script type="text/javascript" src="js/myversion.js"></script>
+  <script type="text/javascript" src="js/home.js"></script>
+  <script type="text/javascript" src="js/calculator.js"></script>
+  <script type="text/javascript" src="js/calculation.js"></script>
+
+  <link href="layout.css" rel="stylesheet" />
+  <link href="championselect.css" rel="stylesheet" />
+  <link href="calculation.css" rel="stylesheet"/>
+</head>
+
+<body>
+<div id="app_container"></div>
+</body>
+
+
+<script>
+$(document).ready(function(){
+  console.log('bootin');
+  lolcalculator.boot({
+    appContainerId : "app_container"
+  });
+
+});
+
+
+</script>

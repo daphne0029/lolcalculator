@@ -3,6 +3,11 @@
 # Repository #
 ######################
 includes/config.inc
+test_*.php
+test_*.txt
+old_*.php
+old_*.js
+sample.js
 
 # OS generated files #
 ######################

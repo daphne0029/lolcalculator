@@ -100,3 +100,110 @@
 .progress_bar > div.checked{
   background-color: rgb(51, 204, 255);
 }
+.ability-block{
+  position: relative;
+}
+.ability-row{
+  height: 160px;
+  padding-left: 20px;
+  padding-top: 35px;
+}
+.ablility-indi{
+    display: inline-block;
+    overflow: auto;
+}
+.abilities{
+  vertical-align: middle;
+  margin: 10px;
+  border: 5px solid rgba(191, 191, 191,0.3);
+  max-height: 70px;
+  max-width: 70px;
+}
+.arrow{
+  font-size: 25px;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: 1s;
+}
+.ablility-indi:hover > .abilities ~ .arrow {
+    opacity: 1;
+}
+.ability-description-block {
+    background-color: rgba(51, 51, 51,0.95);
+    border-radius: 25px;
+    margin-left: 20px;
+    position: absolute;
+    display:none;
+}
+.ability-discription-title{
+    color: #66b3ff;
+    font-size: 20px;
+    font-weight:bold;
+}
+.ability-discription-text {
+    color: white;
+    padding: 17px;
+    font-size: 15px;
+}
+.champstats-area {
+    height: 270px;
+    margin-left: 20px;
+}
+.champstats-levelselect{
+    height: 20px;
+}
+.champstats-block {
+    height: 40px;
+    width: 200px;
+    display: inline-block;
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+.champstats-title {
+    color:white;
+}
+.champstats-text {
+    padding-left: 15px;
+    color:white;
+}
+/************ Dropdown Menu Level select*****************/
+.champstats-dropdown {
+    margin-left: 10px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+.champstats-dropdown .dropdown {
+    position: relative;
+    display: inline-block;
+}
+.champstats-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    max-width: 160px;
+    max-height: 220px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.champstats-dropdown .dropbtn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 10px;
+    font-size: 5px;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    border-radius: 7px;
+}
+.champstats-dropdown .dropdown-content a {
+    color: black;
+    padding: 5px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+.champstats-dropdown a:hover {background-color: #bfbfbf}

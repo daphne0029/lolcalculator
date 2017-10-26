@@ -6,50 +6,35 @@
     apiURL : "http://lolcalculator.local/ajax/data.php"
   };
   var data = {
+    samplechamp : [17,22,51,99,134],
     currentPage : 'home',
     currentChampID : 0,
     currentChampName : '',
     DBdata : {
-      champgeninfo : {},
-      champstats : {},
-      champpassives : {},
-      champspells : {},
-      masteries : {},
-      runes : {},
-      items : {},
+      champgeninfo : [],
+      champstats : [],
+      champpassives : [],
+      champspells : [],
+      masteries : [],
+      runes : [],
+      items : [],
     },
   };
-  var control = {
-    home : {
-      view: [],
-      events : [],
-    },
-    calculation : {
-      view: [],
-      events : [],
-    },
-  }
 
-  lolcalculator.control = control;
   lolcalculator.data = data;
+  lolcalculator.config = config;
 
-  lolcalculator.init = function(){
-    lolcalculator.goTo(data.currentPage);
+  lolcalculator.boot = function(cfg) {
+    lolcalculator.loadConfig(cfg);
+    console.log('booting...');
+    console.log('initializing...');
+    console.log('getting data from DB...');
+    lolcalculator.getDatafromDB(()=>{
+      lolcalculator.init();
+    });
   };
-
-  lolcalculator.goTo = function(page){
-    data.currentPage = page;
-    $('#'+config.appContainerId).empty();
-    var view = '';
-    control[page].view.forEach((func,index)=>{
-      view += func();
-    });
-    $('#'+config.appContainerId).html(view);
-
-    //bind events
-    control[page].events.forEach((func,index)=>{
-      func();
-    });
+  lolcalculator.init = function(){
+    lolcalculator.spawnHome();
   };
 
   lolcalculator.loadConfig = function(cfg) {
@@ -68,6 +53,13 @@
             <div class="navigation">ITEMS</div>
           </div>
         </div>`;
+    return view;
+  };
+
+  lolcalculator.buildFooterView = function(){
+    var view = `
+    <div class="footer">
+    </div>`;
     return view;
   };
 
@@ -96,16 +88,6 @@
     });
   };
 
-  lolcalculator.boot = function(cfg) {
-    lolcalculator.loadConfig(cfg);
-    console.log('booting...');
-    console.log('initializing...');
-    lolcalculator.goTo(data.currentPage);
-    console.log('getting data from DB...');
-    lolcalculator.getDatafromDB();
-  };
-
-  lolcalculator.config = config;
-
+  //lolcalculator.getDatafromDB();
   return lolcalculator;
 }))
