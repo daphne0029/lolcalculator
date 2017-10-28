@@ -59,7 +59,9 @@
     view = lolcalculator.addstatusArea(JSON.parse(champObject.champgeninfo.info),view);
     view = lolcalculator.addAbility(champObject.champspells,champObject.champpassives,view);
     view = lolcalculator.addbasicstats(champObject.champstats,view);
-    view += `</div></div></div></div></div>`;
+    view += `</div></div></div></div>`; //adter champion profile
+    view = lolcalculator.RunesView(view);
+    view += `</div>`;
     view += lolcalculator.buildFooterView();
 
     lolcalculator.Calculatorevents(champObject);
@@ -106,8 +108,10 @@
           var level = $(this).attr('herf').replace('#Level','');
           console.log("Level "+level+"clicked");
           lolcalculator.updatebasicstats(level,champObject);
+          $(".dropbtn").html("Level "+level);
           $("#leveldropdown").hide();
         });
+        lolcalculator.runesEvents();
       });
     };
 

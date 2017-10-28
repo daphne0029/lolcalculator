@@ -1,5 +1,4 @@
 .championprofile{
-  height:800px;
   margin: 25px;
 }
 .profileimg{
@@ -207,3 +206,76 @@
     background-color: #3e8e41;
 }
 .champstats-dropdown a:hover {background-color: #bfbfbf}
+/******************** RUNES *************************/
+.runes-background {
+    background-color: purple;
+    height: 300px;
+    width: 1215px;
+    margin: 0 auto;
+}
+.runes-section {
+    width: 25%;
+    background-color: rgba(191, 191, 191,0.5);
+    display: inline-block;
+    float:left;
+}
+.runes-section-title{
+  background-color: rgba(77, 77, 77,0.5);
+  font-size: 25px;
+  color: red;
+  text-align: center;
+}
+.glyph-title{
+  color: blue;
+}
+.mark-title{
+  color: red;
+}
+.seal-title{
+  color: yellow;
+}
+.quint-title{
+  color: purple;
+}
+.runes-section-main{
+  background-color: rgba(51, 51, 51,0.5);
+  position: relative;
+  height:180px;
+}
+.runes-section-img {
+    height: 50%;
+    width: 50%;
+    display: inline-block;
+    float:left;
+    position:relative;
+}
+.runes-img-icon:active {
+  transform: translateY(4px);
+}
+.runes-amount{
+  font-size: 15px;
+  margin-left: 9px;
+  /* display: inline-block; */
+  position: absolute;
+  margin-top: -38px;
+  margin-left: 75px;
+}
+.runes-img-icon{
+  max-width: 50px;
+  max-height: 50px;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+.amount-input{
+    width: 45px;
+    display: block;
+    margin-left: 97px;
+    margin-top: -42px;
+}
+.runes-section-stats{
+  background-color: rgba(230, 230, 230,0.5);
+  font-size: 20px;
+  color: black;
+  text-align: center;
+  height:85px;
+}

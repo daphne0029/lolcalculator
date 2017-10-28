@@ -36,6 +36,10 @@
 .listchamp .champicons {
   max-width:100px;
   max-height:100px;
+  border-radius: 10px;
+}
+img.champicons:active {
+    transform: translateY(4px);
 }
 .listchamp .champname{
   color: white;
