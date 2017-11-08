@@ -56,9 +56,9 @@
                 <div class="champtitle">${champObject.champgeninfo.title}</div>
               </div>
               <div class="generalinfo">`;
-    view = lolcalculator.addstatusArea(JSON.parse(champObject.champgeninfo.info),view);
-    view = lolcalculator.addAbility(champObject.champspells,champObject.champpassives,view);
-    view = lolcalculator.addbasicstats(champObject.champstats,view);
+    view = addstatusArea(JSON.parse(champObject.champgeninfo.info),view);
+    view = addAbility(champObject.champspells,champObject.champpassives,view);
+    view = addbasicstats(champObject.champstats,view);
     view += `</div></div></div></div>`; //adter champion profile
     view = lolcalculator.RunesView(view);
     view += `</div>`;
@@ -106,7 +106,6 @@
         };
         $("[herf^='#Level']").click(function(){
           var level = $(this).attr('herf').replace('#Level','');
-          console.log("Level "+level+"clicked");
           lolcalculator.updatebasicstats(level,champObject);
           $(".dropbtn").html("Level "+level);
           $("#leveldropdown").hide();
@@ -116,9 +115,9 @@
     };
 
     lolcalculator.updatebasicstats = function(level,champObject){
-      var Newstats = lolcalculator.calculatestats(level,champObject.champstats);
-      Object.keys(Newstats).forEach(function(element){
-        console.log("#stat-title-"+element+" > .champstats-text");
+      lolcalculator.calculatestats(level,champObject.champstats);
+      var Newstats = lolcalculator.championModel.data.baseStats;
+      Object.keys(lolcalculator.championModel.data.baseStats).forEach(function(element){
         $("#stat-title-"+element+" > .champstats-text").html(Newstats[element]);
       });
     };
@@ -126,7 +125,6 @@
       var cal = lolcalculator.lib.calculation;
       var Newstats = {};
       console.log("Level " + level);
-      console.log(champstats);
       Newstats["Health"] = cal.general.HPbyLevel(champstats.hp,champstats.hpperlevel,level);
       Newstats["Health-Regen"] = cal.regen.HPbylevel(champstats.hpregen,champstats.hpregenperlevel,level);
       Newstats["Attack-Damage"] = cal.offense.AttackDamagebyLevel(champstats.attackdamage,champstats.attackdamageperlevel,level);
@@ -135,9 +133,13 @@
       Newstats["Magic-Resist"] = cal.general.MRbyLevel(champstats.magicresistance,champstats.magicresistanceperlevel,level);
       Newstats["Movement-Speed"] = champstats.movementspeed;
       console.log(Newstats);
-      return Newstats;
+      lolcalculator.championModel.loadBaseStats(Newstats);
+      console.log('setLevel',level);
+      lolcalculator.championModel.setLevel(level);
+      lolcalculator.showstats();
+      return true;
     };
-    lolcalculator.addbasicstats = function(champstats,view){
+    function addbasicstats(champstats,view){
       console.log(champstats);
       var stats_title = ["Health","Health-Regen","Attack-Damage","Armor","Attack-Speed","Magic-Resist","Movement-Speed"];
       var attackspeed = lolcalculator.lib.calculation.attackspeed.BaseAttackSpeed(parseFloat(champstats.attackspeedoffset));
@@ -167,7 +169,7 @@
       return view;
     };
 
-    lolcalculator.addAbility = function(champspells,champpassives,view){
+    function addAbility(champspells,champpassives,view){
       var spells = JSON.parse(champspells.data);
       console.log(spells);
       var passive = JSON.parse(champpassives.data);
@@ -197,7 +199,7 @@
       return view;
     };
 
-    lolcalculator.addstatusArea = function(info,view){
+    function addstatusArea(info,view){
       var statstitle = ["Defense","Attack","Magic","Difficulty"];
       var stats = 0;
       for(var i=0;i<4;++i){

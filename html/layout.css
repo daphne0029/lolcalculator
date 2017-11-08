@@ -1,7 +1,7 @@
 body {
   padding:0px;
   margin:0px;
-
+  font-family: 'Caudex';
 }
 /**************************** Header *****************************/
 
@@ -34,7 +34,10 @@ body {
 
 .body {
   height: 2500px;
-  background-color: #8db0f2 ;
+  background-image: url(./assets/background/summonersrift.jpg);
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center top;
   position: relative;
   padding: 25px;
 }

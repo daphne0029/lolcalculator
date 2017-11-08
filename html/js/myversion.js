@@ -18,6 +18,27 @@
       masteries : [],
       runes : [],
       items : [],
+      runesimg :[],
+    },
+    selectedRunes : {
+      runestats : {
+        'mark' : {},
+        'glyph' : {},
+        'seal' : {},
+        'quint' : {}
+      },
+      runesquantity : {
+        'mark' : [],
+        'glyph' : [],
+        'seal' : [],
+        'quint' : []
+      },
+      runeserrorFlag : {
+        'mark' : 1,
+        'glyph' : 1,
+        'seal' : 1,
+        'quint' : 1
+      },
     },
   };
 
@@ -78,6 +99,7 @@
           data.DBdata.masteries = response.data.masteries;
           data.DBdata.runes = response.data.runes;
           data.DBdata.items = response.data.items;
+          data.DBdata.runesimg = response.data.runesimg;
           if(typeof(callback) == 'function'){
             callback();
           }

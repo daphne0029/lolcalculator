@@ -14,6 +14,7 @@ class dataService{
     $output['runes'] = $this->getrunes_all();
     $output['masteries'] = $this->getmasteries_all();
     $output['items'] = $this->getitems_all();
+    $output['runesimg']=$this->getrunesfiles();
 
     return $output;
   }
@@ -138,6 +139,24 @@ class dataService{
           ))
          ->execute()
         ->resultset();
+    return $results;
+  }
+  public function getrunesfiles(){
+    $dir = ROOTPATH . "/html/assets/Runes";
+    $stdtag = ['mark','glyph','seal','quint'];
+    $listofDIR = scandir($dir);
+    foreach ($listofDIR as $key => $value) {
+      $nametag = explode("_",$value);
+      if(in_array($nametag[0],$stdtag)){
+        $nametag[2] = str_replace(".png","",$nametag[2]);
+        $results[] = array(
+          'type' => $nametag[0],
+          'id' => $nametag[1],
+          'name' => $nametag[2],
+          'path' => 'assets/Runes/' . $value
+        );
+      };
+    };
     return $results;
   }
 }
