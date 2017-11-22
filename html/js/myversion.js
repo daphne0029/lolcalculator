@@ -10,6 +10,7 @@
     currentPage : 'home',
     currentChampID : 0,
     currentChampName : '',
+    currentChampObj : {},
     DBdata : {
       champgeninfo : [],
       champstats : [],
@@ -42,8 +43,17 @@
     },
   };
 
+  var disableList = {
+    items : [3671,3672,3673,3675,
+    3647,3642,3643,3641,3640,3636,3635,3634,3631,3599,
+    3901,3902,3903,
+    3198,3197,3196,
+    3340,3341,3363,3364],
+  };
+
   lolcalculator.data = data;
   lolcalculator.config = config;
+  lolcalculator.disableList = disableList;
 
   lolcalculator.boot = function(cfg) {
     lolcalculator.loadConfig(cfg);

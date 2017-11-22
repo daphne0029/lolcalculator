@@ -41,6 +41,7 @@
 
   lolcalculator.spawnCalculator = function(){
     var champObject = lolcalculator.getChampionData(data.currentChampID);
+    lolcalculator.data.currentChampObj = champObject;
     var role = lolcalculator.roledefine(JSON.parse(champObject.champgeninfo.info));
     var imagpath = "url(./assets/ChampionProfile/" + data.currentChampID + ".jpg)";
 
@@ -60,7 +61,9 @@
     view = addAbility(champObject.champspells,champObject.champpassives,view);
     view = addbasicstats(champObject.champstats,view);
     view += `</div></div></div></div>`; //adter champion profile
-    view = lolcalculator.RunesView(view);
+    view = lolcalculator.RunesView(view); // Display Runes's page!!!
+    view += lolcalculator.FrameView();
+    view += lolcalculator.SummaryView();
     view += `</div>`;
     view += lolcalculator.buildFooterView();
 
@@ -106,11 +109,15 @@
         };
         $("[herf^='#Level']").click(function(){
           var level = $(this).attr('herf').replace('#Level','');
+          console.log("Level " + level + "Chosen");
           lolcalculator.updatebasicstats(level,champObject);
           $(".dropbtn").html("Level "+level);
+          $(".frame-level-bubble").html(level);
           $("#leveldropdown").hide();
         });
         lolcalculator.runesEvents();
+        lolcalculator.FrameEvents();
+        lolcalculator.SummaryEvents();
       });
     };
 

@@ -11,7 +11,7 @@
     <div id="mark" class="runes-section">
       <div class="runes-section-title mark-title">MARK</div>
       <div class="runes-section-main" value="mark">`;
-    view += lolcalculator.add4smallsection('mark');
+    view += add4smallsection('mark');
     view += `
     </div>
     <div class="runes-section-stats"></div>
@@ -21,7 +21,7 @@
     <div id="glyph" class="runes-section">
       <div class="runes-section-title glyph-title">GLYPH</div>
       <div class="runes-section-main" value="glyph">`;
-    view += lolcalculator.add4smallsection('glyph');
+    view += add4smallsection('glyph');
     view += `</div>
     <div class="runes-section-stats"></div>
     </div>`;
@@ -30,7 +30,7 @@
     <div id="seal" class="runes-section">
     <div class="runes-section-title seal-title">SEAL</div>
     <div class="runes-section-main" value="seal">`;
-    view += lolcalculator.add4smallsection('seal');
+    view += add4smallsection('seal');
     view += `</div>
     <div class="runes-section-stats"></div>
     </div>`;
@@ -39,13 +39,12 @@
     <div id="quint" class="runes-section">
     <div class="runes-section-title Quint-title">QUITESSENCE</div>
     <div class="runes-section-main" value="quint">`;
-    view += lolcalculator.add4smallsection('quint');
+    view += add4smallsection('quint');
     view += `</div>
     <div class="runes-section-stats"></div>
     </div>`;
     view +=`</div>`; //close runes-background
     //--------------Modal------------------
-    //view = lolcalculator.addruneselectModal(view);
     //
     view+=`</div>`;// close <div class="runes">
 
@@ -53,7 +52,7 @@
     return view;
   };
 //<img class="runes-img-icon" data-toggle="modal" data-target="#myModal" src="/assets/Runes/blank.png" alt="blank.png">
-  lolcalculator.add4smallsection = function(tag){
+  function add4smallsection(tag){
     var view="";
     var quint4 = "";
     for(var i=0; i<4;++i){
@@ -69,16 +68,14 @@
 
   lolcalculator.displayRuneSelectModal = function(tag,field){
     //insert modal view
-    lolcalculator.addruneselectModal(tag,field);
+    addruneselectModal(tag,field);
     //display modal view
     setTimeout(()=>{
       $("#myModal").addClass("in");
-    },200)
-
-    $("#myModal")
+    },200);
   };
 
-  lolcalculator.addruneselectModal = function(tag,field){
+  function addruneselectModal(tag,field){
     var view = `
     <div class="mask"></div>
     <div class="modal fade" id="myModal" role="dialog" >
@@ -90,7 +87,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Select Runes</h4>
             </div>
-            <div class="modal-body">`;
+            <div class="modal-body rune-modal-body">`;
     view += `<div class="runes-display-block">`;
     data.DBdata.runesimg.filter((item)=>{
       if(item.type == tag){
@@ -214,7 +211,7 @@
       lolcalculator.data.selectedRunes.runesquantity = amount;
       updatestats();
       //if quantity of each type is > than its own maximun, then highlight that part
-      lolcalculator.data.runeserrorFlag = RunesQuantityCheck();
+      RunesQuantityCheck();
       lolcalculator.showstats();
     });
 
@@ -226,7 +223,7 @@
     //only show stats when both rune and quantity exist
     var stats = [];
     var arr_size = stats.length;
-    var flag = lolcalculator.data.runeserrorFlag;
+    var flag = lolcalculator.data.selectedRunes.runeserrorFlag;
     Object.keys(data.selectedRunes.runesquantity).forEach((ele,ind)=>{
       stats = {
         "Attack Damage" : 0,
@@ -256,7 +253,7 @@
 
   function RunesQuantityCheck(){
     var total = {};
-    var flag = {};
+    var flag = lolcalculator.data.selectedRunes.runeserrorFlag;
     Object.keys(data.selectedRunes.runesquantity).forEach((ele,ind)=>{
       total[ele] = data.selectedRunes.runesquantity[ele].reduce((sum, value) => sum + value, 0);
       var errorView = `<div class="runes-section-stats-error">
@@ -265,7 +262,7 @@
       </div>`;
       //turn on
       if(ele === 'quint' && total[ele] > 3){
-        //console.log(total[ele]);
+        console.log(total[ele]);
         $("#quint").css("border-color","red");
         $(`#quint`).children(".runes-section-stats").children(".rune-section-stats-display").hide();
         $(`#quint`).children(".runes-section-stats").html(errorView);
@@ -282,7 +279,8 @@
         flag[ele] = 1;
       };
     });
-    return flag;
+    lolcalculator.data.selectedRunes.runeserrorFlag = flag;
+    return true;
   };
 
   function updatestats(){

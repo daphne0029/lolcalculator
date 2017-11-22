@@ -1,0 +1,331 @@
+.frame-view {
+    margin: 30px;
+    position: relative;
+}
+.bgframe{
+  margin: 0 auto;
+  height: 250px;
+  width: 1085px;
+  position: relative;
+}
+.frame-img {
+    background-image: url(./assets/Frame/purpleframe.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    height: 250px;
+    width: 1085px;
+    margin: 0 auto;
+    display: block;
+    z-index: 5;
+}
+.frame-championicon {
+    top: 70px;
+    margin: 0px;
+    left: 52px;
+    position: absolute;
+    z-index: 0;
+}
+img.frame-icon-img {
+    border-radius: 50%;
+    height: 125px;
+}
+.frame-spells-passive {
+    display: inline-block;
+}
+.frame-spell-P-img {
+    max-width: 45px;
+    max-height: 45px;
+    margin-top: 75px;
+    margin-left: 217px;
+}
+.frame-spells-ability {
+    margin-top: -40px;
+    margin-left: 285px;
+    width: 320px;
+}
+.frame-spell-indi {
+    display: inline-block;
+}
+img.frame-spell-img {
+  max-width: 55px;
+  max-height: 55px;
+  margin-right: 25px;
+}
+/****************ITEMS******************/
+.frame-items {
+    position: absolute;
+    right: 144px;
+    top: 74px;
+}
+.frame-items-indi-block {
+    display: inline-block;
+    margin-right: 18px;
+    /*cursor: pointer;*/
+}
+.frame-items-indi-icon{
+  max-width: 40px;
+  max-height: 40px;
+}
+.frame-items-six-blocks {
+  width: 175px;
+  height: 107px;
+}
+.frame-items-row-one {
+    margin-bottom: 20px;
+}
+.frame-items-purchase {
+    position: absolute;
+    right: 16px;
+    top: 117px;
+}
+.frame-items-purchase-button:hover{
+  opacity: 1;
+}
+.frame-items-purchase-button {
+    background-color: rgb(0,0,0);
+    opacity: 0.5;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+.item-purchase-dialog{
+  width: 1217px;
+  /*padding-top: 60px;*/
+}
+.item-modal-body {
+    height: 725px;
+}
+#item-purchase-content{
+  background-image: url(./assets/background/dark-forest.jpg);
+  background-position: center;
+  -webkit-filter: grayscale(40%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(40%);
+  color: white;
+  height: 880px;
+}
+.item-tag-list {
+    width: 250px;
+    display: inline-block;
+    height: 700px;
+    background: rgba(25,25,25,0.8);
+    float: left;
+    color: rgb(222, 181, 61);
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+span.item-tag-group-name {
+    padding-left: 10px;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+.item-display-list{
+  overflow-y: auto;
+  display: inline-block;
+  width: 642px;
+  max-height: 630px;
+}
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+label.item-tag-name {
+    padding-left: 20px;
+    text-transform: capitalize;
+}
+.item-purchase-icon-block {
+    display: inline-block;
+    overflow:visible;
+    height:55px;
+    width: 55px;
+    float: left;
+    margin: 17px;
+}
+img.item-purchase-icon {
+    max-width: 55px;
+    max-height: 55px;
+    border: rgb(140, 134, 8);
+    border-style: ridge;
+    border-width: 1px;
+}
+.chosen-items-clearall {
+    margin-top: 24px;
+    font-size: 14px;
+    font-weight: bold;
+    border-style: none;
+    background-color: brown;
+    color: darkkhaki;
+    margin-left: 27px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+}
+button.chosen-items-clearall:hover{
+  color: gold;
+  background-color: brown;
+}
+button.chosen-items-clearall:active {
+    transform: translateY(4px);
+}
+.Modal-purchase-btn {
+    margin-top: 15px;
+    margin-right: 25px;
+    background-color: burlywood;
+    font-weight: bold;
+    color: brown;
+    border: darkgoldenrod;
+    border-style: outset;
+    border-width: 5px;
+    font-size: 20px;
+}
+.Modal-purchase-btn:hover {
+    color: bisque;
+    background-color: brown;
+    border-color: burlywood;
+}
+.item-des-description {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.item-description-section {
+    display: inline-block;
+    width: 278px;
+    height: 700px;
+    margin-left: 15px;
+    float: right;
+    background-color: rgba(25,25,25,0.8);
+    border-radius: 25px;
+    margin-top: -50px;
+}
+.item-des-title{
+  color: rgb(222, 181, 61);
+  font-size: 25px;
+  margin: 10px;
+}
+stats {
+    color: rgb(19, 253, 255);
+}
+unique {
+    color: rgb(249, 136, 118);
+}
+passive {
+    color: rgb(249, 136, 118);
+}
+active {
+    color: rgb(249, 136, 118);
+}
+.item-des-description > a {
+    color: white;
+    pointer-events: none;
+}
+.item-des-description > font > a {
+    color: white;
+    pointer-events: none;
+}
+.item-des-description > font {
+    font-size: unset;
+}
+.item-searchbar-block{
+  height: 45px;
+  width: 600px;
+  display: inline-block;
+  margin-left: 15px;
+}
+.chosen-items {
+    display: inline-block;
+    float: left;
+}
+.chosen-items-block {
+    height: 59px;
+    margin: 5px 15px;
+    width: 59px;
+    display: inline-block;
+    float: left;
+    border-width: 2px;
+    border-style: groove;
+    border-color: rgb(140, 134, 8);
+}
+.chosen-items-description {
+    float: left;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 25px;
+    margin-left: 30px;
+    color: burlywood;
+    margin-right: 60px;
+}
+/*Display Level*/
+.frame-level {
+    position: absolute;
+    margin-top: 178px;
+    margin-left: 137px;
+}
+.frame-level-bubble {
+    display: block;
+    border-radius: 50%;
+    color: rgb(165, 180, 218);
+    background-color: black;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 2px;
+    border-width: 3px;
+    border-color: beige;
+    border-style: groove;
+}
+/*Display Role*/
+.frame-role{
+  position: absolute;
+  margin-top: 177px;
+  margin-left: 53px;
+}
+.frame-role-img{
+  max-height: 35px;
+  max-width: 35px;
+  display: block;
+}
+.frame-role-bubble {
+    background-color: black;
+    height: 39px;
+    width: 40px;
+    padding-top: 2px;
+    border-radius: 20px;
+    border-width: 3px;
+    border-color: beige;
+    border-style: groove;
+}
+/*Display Trinket*/
+.frame-trinket {
+    position: absolute;
+    margin-top: 79px;
+    margin-left: 943px;
+}
+img.frame-trinket-img {
+    max-width: 35px;
+    max-height: 35px;
+}
+/*Display Recall*/
+.frame-recall {
+    position: absolute;
+    margin-left: 942px;
+    margin-top: 134px;
+}
+img.frame-recall-img {
+    max-height: 35px;
+    border-radius: 50%;
+}
+/*Display Summoner's Spells*/
+.frame-summonerspell {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 613px;
+    margin-top: 76px;
+}
+img.frame-summonerspell-img {
+    max-height: 43px;
+    margin-right: 18px;
+}

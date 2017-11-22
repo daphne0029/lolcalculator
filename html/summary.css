@@ -1,0 +1,10 @@
+.summary-frame{
+  background-image: url(./assets/Frame/summary/Platiumframe-summary.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: relative;
+  height: 525px;
+  width: 1085px;
+  margin: 0 auto;
+  display: block;
+}

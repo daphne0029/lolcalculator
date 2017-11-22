@@ -20,10 +20,11 @@
       },
       runes : [
       ],
-      items : [
+      item_stats : [
         {ad : 10},
         {ad : 20},
-      ]
+      ],
+      item_list : [],
     },
     get ad() {
       var totalAd = this.data.baseStats['Attack-Damage'] + this.runesAD + this.itemsAD;
