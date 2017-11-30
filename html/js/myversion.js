@@ -6,6 +6,7 @@
     apiURL : "http://lolcalculator.local/ajax/data.php"
   };
   var data = {
+    Hasdefault : false,
     samplechamp : [17,22,51,99,134],
     currentPage : 'home',
     currentChampID : 0,
@@ -51,9 +52,16 @@
     3340,3341,3363,3364],
   };
 
+  var enabledStats = {
+    'General' : ["Health","Movement Speed"],
+    'Offense' : ["Attack Damage","Ability Power"],
+    'Defense' : ["Armor","Magic Resist"],
+  };
+
   lolcalculator.data = data;
   lolcalculator.config = config;
   lolcalculator.disableList = disableList;
+  lolcalculator.enabledStats = enabledStats;
 
   lolcalculator.boot = function(cfg) {
     lolcalculator.loadConfig(cfg);
@@ -65,12 +73,67 @@
     });
   };
   lolcalculator.init = function(){
-    lolcalculator.spawnHome();
+    lolcalculator.ValidateAndReadHashData();
+    //If champion is already selected,
+    //then go to champion calculator
+    if(lolcalculator.data.currentChampID != 0){
+      lolcalculator.spawnCalculator();
+    }else{
+      lolcalculator.spawnHome();
+    };
   };
 
   lolcalculator.loadConfig = function(cfg) {
     console.log('loading Config');
     config = $.extend(config,cfg);
+  };
+
+  lolcalculator.SaveData2Hash = function(){
+    var Hashdata = {};
+    var data = lolcalculator.data;
+    var model = lolcalculator.championModel;
+    //Gather data
+    Hashdata['id'] = data.currentChampID;
+    Hashdata['name'] = data.currentChampName;
+    Hashdata['selectedrunes'] = data.selectedRunes;
+    Hashdata['runes'] = model.data.runes;
+    Hashdata['item_stats'] = model.data.item_stats;
+    Hashdata['item_list'] = model.data.item_list;
+    Hashdata['level'] = model.data.level;
+    //Generate Json string
+    console.log("saving data");
+    console.log(Hashdata);
+    window.location.hash = JSON.stringify(Hashdata);
+  };
+
+  //init will call this function
+  lolcalculator.ValidateAndReadHashData = function(){
+    console.log("Loading Hash data");
+    try {
+      JSON.parse(window.location.hash.substring(1));
+      lolcalculator.data.Hasdefault = true;
+    } catch (err) {
+      window.location.hash = "";
+      console.log('invalid data');
+      return;
+    };
+    if((window.location.hash.substring(1)).length <= 0){
+      return;
+    };
+    var Hashdata = JSON.parse(window.location.hash.substring(1));
+    var data = lolcalculator.data;
+    var model = lolcalculator.championModel;
+
+    //@@@TO DO: Validate these stats
+    data.currentChampID = Hashdata['id'];
+    data.currentChampName = Hashdata['name'];
+    data.selectedRunes = Hashdata['selectedrunes'];
+    data.champObject = lolcalculator.getChampionData(data.currentChampID);
+    console.log(data.champObject);
+    model.data.runes = Hashdata['runes'];
+    model.data.item_stats = Hashdata['item_stats'];
+    model.data.item_list = Hashdata['item_list'];
+    model.data.level = Hashdata['level'];
   };
 
   lolcalculator.buildHeaderView = function(title){

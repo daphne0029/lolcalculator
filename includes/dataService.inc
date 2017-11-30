@@ -146,13 +146,12 @@ class dataService{
     $stdtag = ['mark','glyph','seal','quint'];
     $listofDIR = scandir($dir);
     foreach ($listofDIR as $key => $value) {
-      $nametag = explode("_",$value);
+      $valuewithoutextention = str_replace(".png","",$value);
+      $nametag = explode("_",$valuewithoutextention);
       if(in_array($nametag[0],$stdtag)){
-        $nametag[2] = str_replace(".png","",$nametag[2]);
         $results[] = array(
           'type' => $nametag[0],
           'id' => $nametag[1],
-          'name' => $nametag[2],
           'path' => 'assets/Runes/' . $value
         );
       };

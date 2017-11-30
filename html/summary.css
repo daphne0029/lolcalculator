@@ -1,3 +1,7 @@
+.summary {
+    width: 1085px;
+    margin: 0 auto;
+}
 .summary-frame{
   background-image: url(./assets/Frame/summary/Platiumframe-summary.png);
   background-repeat: no-repeat;
@@ -7,4 +11,125 @@
   width: 1085px;
   margin: 0 auto;
   display: block;
+}
+.summary-title-block {
+    width: 995px;
+}
+.summary-title-title {
+    font-size: 40px;
+    color: cadetblue;
+    text-align: center;
+}
+.summary-inner-block {
+    height: 500px;
+    width: 1085px;
+    position: relative;
+    padding: 40px 45px;
+}
+.summary-title {
+    position: absolute;
+}
+.summary-title-name {
+    color: peru;
+    width: 200px;
+    padding-left: 5px;
+    font-size: 35px;
+    border-bottom-width: 2px;
+    border-bottom-style: outset;
+    border-bottom-color: rgba(222, 184, 135, 0.7);
+    display: inline-block;
+}
+.summary-title-title {
+    font-size: 35px;
+    color: #8dd6d8;
+}
+.summary-level-block {
+    display: inline-block;
+    margin-left: 320px;
+}
+.summary-level-data {
+    font-size: 30px;
+    color: peru;
+}
+.summary-item-block {
+    display: inline-block;
+    float: right;
+    display: inline-block;
+}
+img.summary-itemd-data-icon {
+    max-height: 45px;
+    margin-right: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: goldenrod;
+}
+.summary-stats-block {
+    position: absolute;
+    margin-top: 60px;
+    height: 360px;
+    width: 995px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background-color: rgb(183, 183, 128);
+}
+.summary-stats-block-half {
+    background-color: rgba(139, 0, 0, 0.8);
+    height: 340px;
+    width: 50%;
+    border-radius: 10px;
+    float: left;
+    padding: 10px;
+}
+.summary-stats-text {
+    font-size: 20px;
+    color: antiquewhite;
+}
+.summary-stats-row {
+    height: 30px;
+    width: 460px;
+    padding-left: 10px;
+}
+.summary-stats-row:hover {
+    background-color: rgba(67,67,67,0.5);
+    padding-left: 15px;
+}
+.summary-stats-col1 {
+    display: inline-block;
+    width: 250px;
+}
+.summary-stats-col2 {
+    display: inline-block;
+    margin-left: 50px;
+    width: 100px;
+}
+.summary-stats-col3 {
+    padding-top: 5px;
+    display: none;
+    float: right;
+    height: 30px;
+}
+.summary-calculate-button {
+    margin-bottom: 75px;
+    padding-top: 30px;
+}
+button.summary-calculate-btn {
+    font-size: 30px;
+    padding: 5px 10px;
+    background-color: burlywood;
+    font-weight: bold;
+    color: brown;
+    border: darkgoldenrod;
+    border-style: outset;
+    border-width: 5px;
+    margin: 0 auto;
+    display: block;
+    outline: none;
+}
+button.summary-calculate-btn:hover {
+    color: #deab6f;;
+    background-color: brown;
+    border-color: burlywood;
+}
+button.summary-calculate-btn:active {
+    transform: translateY(4px);
 }

@@ -55,13 +55,53 @@
   function add4smallsection(tag){
     var view="";
     var quint4 = "";
+    var imghtml = "";
+    var inputhtml = "";
     for(var i=0; i<4;++i){
-      if(tag=="quint" && i==3){ quint4 = `style="display: none"`;}
-      view += `<div class="runes-section-img" id="section-img-${tag}-${i+1}" ${quint4}>
-        <img onclick="lolcalculator.displayRuneSelectModal('${tag}',${i+1})" class="runes-img-icon" src="/assets/Runes/blank.png" alt="blank.png">
-        <div class="runes-amount">x</div>
-        <input class="amount-input form-control" type="int">
-      </div>`;
+      if(tag=="quint" && i==3){ quint4 = `style="display: none"`;};
+      if(lolcalculator.data['Hasdefault']){
+        imghtml = modify_runesimg(tag,i);
+        inputhtml = modify_runesquantity(tag,i);
+      }else{
+        imghtml = `<img onclick="lolcalculator.displayRuneSelectModal('${tag}',${i+1})" class="runes-img-icon" src="/assets/Runes/blank.png" alt="blank.png">`;
+        inputhtml = `<input class="amount-input form-control" type="int">`;
+      };
+      view += `<div class="runes-section-img" id="section-img-${tag}-${i+1}" ${quint4}>`;
+      view += imghtml;
+      view += `<div class="runes-amount">x</div>`;
+      view += inputhtml;
+      view += `</div>`;
+    };
+    //modify with url data
+
+    return view;
+  };
+
+  function modify_runesimg(tag,i){
+    var view = "";
+    var runestats = lolcalculator.data.selectedRunes.runestats;
+    //check if stats array is Empty
+    if(runestats[tag][i].length > 0){
+      var runeID = runestats[tag][i][0]['ID'];
+      var runeName = tag + "_" + runeID;
+      view += `<img onclick="lolcalculator.displayRuneSelectModal('${tag}',${i+1})" class="runes-img-icon"
+      src="/assets/Runes/${runeName}.png" alt="${runeName}.png">`;
+    }else{
+      view += `<img onclick="lolcalculator.displayRuneSelectModal('${tag}',${i+1})" class="runes-img-icon"
+      src="/assets/Runes/blank.png" alt="blank.png">`;
+    };
+    return view;
+  };
+
+  function modify_runesquantity(tag,i){
+    var runesquantity = lolcalculator.data.selectedRunes.runesquantity;
+    var view = "";
+    var quantity = 0;
+    if(runesquantity[tag][i] > 0){
+      quantity = runesquantity[tag][i];
+      view = `<input class="amount-input form-control" type="int" value="${quantity}">`;
+    }else{
+      view = `<input class="amount-input form-control" type="int">`;
     };
     return view;
   };
@@ -101,7 +141,6 @@
           return true;
         }
       });
-      //console.log(data.DBdata.runes[key]);
       view += `<div class="runeimg-display">
       <img class="runes-img-icon" src="${elem.path}" alt="blank.png" field="${field}">
       <div class="runes-img-title">${data.DBdata.runes[key].name}</div>
@@ -142,6 +181,7 @@
 
   lolcalculator.runesEvents = function(){
     document.oncontextmenu = function() {return false;};
+    //Right click -> deselect + clean input
     $('.runes-section-img .runes-img-icon').mousedown(function(e){
       if( e.button == 2 ) {
         var oriIMG = $(this).attr('alt');
@@ -176,7 +216,8 @@
           if(img[ele][i] == 'blank.png'){
             runeID[ele][i] = "";
           }else{
-            var runeSplit = img[ele][i].split("_");
+            var imgNoExtension = img[ele][i].replace(/\.png/,"");
+            var runeSplit = imgNoExtension.split("_");
             runeID[ele][i] = runeSplit[1]; //ID is string
           }
         };
@@ -230,18 +271,28 @@
         "Ability Power" : 0,
         "Armor" : 0 ,
         "Magic Resist" : 0,
+        "Health" : 0,
+        "Critical Chance" : 0,
+        "Attack Speed" : 0,
       };
       var view = `<div class="rune-section-stats-display">
-      <span>Level: ${lolcalculator.championModel.data.level}<br><span>`;
+      <span class="rune-section-stats-display-level">Level ${lolcalculator.championModel.data.level}<br></span>`;
       var title = "";
       stats["Attack Damage"] = lolcalculator.championModel.runesAD(ele).toFixed(2);
       stats["Ability Power"] = lolcalculator.championModel.runesAP(ele).toFixed(2);
       stats["Armor"] = lolcalculator.championModel.runesArmor(ele).toFixed(2);
       stats["Magic Resist"] = lolcalculator.championModel.runesMR(ele).toFixed(2);
+      stats["Health"] = lolcalculator.championModel.runesHP(ele).toFixed(2);
+      stats["Attack Speed"] = lolcalculator.championModel.runesAS(ele).toFixed(1); //return %
+      stats["Critical Chance"] = lolcalculator.championModel.runesCrit_Chance(ele).toFixed(2); //return %
       Object.keys(stats).forEach((e,i)=>{
         if(stats[e] != 0){
-          view += `<span>${e}:    +${stats[e]}<br></span>`;
-        }
+          if(e == "Critical Chance" || e == "Attack Speed"){
+            view += `<span class="rune-section-stats-display-data">${e}:    +${stats[e]}%<br></span>`;
+          }else{
+            view += `<span class="rune-section-stats-display-data">${e}:    +${stats[e]}<br></span>`;
+          };
+        };
       });
       view += `</div>`;
       if(flag[ele]){
@@ -330,7 +381,7 @@
         };
       };
     });
-
+    lolcalculator.SaveData2Hash();
     return true;
   };
 

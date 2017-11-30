@@ -9,20 +9,21 @@
   position: relative;
 }
 .frame-img {
-    background-image: url(./assets/Frame/purpleframe.png);
+    background-image:  url(./assets/Frame/dragontrainerTristana/DragonTrainerTristana.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    position: relative;
+    position: absolute;
     height: 250px;
     width: 1085px;
-    margin: 0 auto;
+    left: 0;
+    top: 0;
     display: block;
     z-index: 5;
 }
 .frame-championicon {
-    top: 70px;
+    top: 95px;
     margin: 0px;
-    left: 52px;
+    left: 92px;
     position: absolute;
     z-index: 0;
 }
@@ -30,22 +31,22 @@ img.frame-icon-img {
     border-radius: 50%;
     height: 125px;
 }
-.frame-spells-passive {
-    display: inline-block;
+.frame-passive {
+    position: absolute;
+    left: 256px;
+    top: 94px;
 }
-.frame-spell-P-img {
-    max-width: 45px;
-    max-height: 45px;
-    margin-top: 75px;
-    margin-left: 217px;
+img.frame-passive-img {
+    max-width: 50px;
 }
-.frame-spells-ability {
-    margin-top: -40px;
-    margin-left: 285px;
-    width: 320px;
+.frame-ability {
+    position: absolute;
+    left: 319px;
+    top: 96px;
 }
 .frame-spell-indi {
     display: inline-block;
+    margin-right: 17px;
 }
 img.frame-spell-img {
   max-width: 55px;
@@ -55,29 +56,30 @@ img.frame-spell-img {
 /****************ITEMS******************/
 .frame-items {
     position: absolute;
-    right: 144px;
-    top: 74px;
+    right: 92px;
+    top: 95px;
 }
 .frame-items-indi-block {
     display: inline-block;
-    margin-right: 18px;
+    margin-right: 15px;
     /*cursor: pointer;*/
 }
 .frame-items-indi-icon{
-  max-width: 40px;
-  max-height: 40px;
+  max-width: 45px;
+  max-height: 45px;
 }
 .frame-items-six-blocks {
-  width: 175px;
+  width: 190px;
   height: 107px;
 }
 .frame-items-row-one {
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 .frame-items-purchase {
     position: absolute;
-    right: 16px;
-    top: 117px;
+    right: 105px;
+    top: 214px;
+    font-size: 18px;
 }
 .frame-items-purchase-button:hover{
   opacity: 1;
@@ -258,8 +260,8 @@ active {
 /*Display Level*/
 .frame-level {
     position: absolute;
-    margin-top: 178px;
-    margin-left: 137px;
+    margin-top: 202px;
+    margin-left: 174px;
 }
 .frame-level-bubble {
     display: block;
@@ -273,14 +275,14 @@ active {
     font-weight: bold;
     padding-top: 2px;
     border-width: 3px;
-    border-color: beige;
+    border-color: chocolate;
     border-style: groove;
 }
 /*Display Role*/
 .frame-role{
   position: absolute;
-  margin-top: 177px;
-  margin-left: 53px;
+  margin-top: 200px;
+  margin-left: 90px;
 }
 .frame-role-img{
   max-height: 35px;
@@ -294,27 +296,27 @@ active {
     padding-top: 2px;
     border-radius: 20px;
     border-width: 3px;
-    border-color: beige;
+    border-color: chocolate;
     border-style: groove;
 }
 /*Display Trinket*/
 .frame-trinket {
     position: absolute;
-    margin-top: 79px;
-    margin-left: 943px;
+    margin-top: 98px;
+    margin-left: 980px;
 }
 img.frame-trinket-img {
-    max-width: 35px;
-    max-height: 35px;
+    max-width: 40px;
+    max-height: 40px;
 }
 /*Display Recall*/
 .frame-recall {
     position: absolute;
-    margin-left: 942px;
-    margin-top: 134px;
+    margin-left: 985px;
+    margin-top: 158px;
 }
 img.frame-recall-img {
-    max-height: 35px;
+    max-height: 40px;
     border-radius: 50%;
 }
 /*Display Summoner's Spells*/
@@ -322,10 +324,54 @@ img.frame-recall-img {
     position: absolute;
     top: 0;
     left: 0;
-    margin-left: 613px;
-    margin-top: 76px;
+    margin-left: 650px;
+    margin-top: 95px;
 }
 img.frame-summonerspell-img {
-    max-height: 43px;
-    margin-right: 18px;
+    max-height: 49px;
+    margin-right: 14px;
+}
+.frame-hpbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 193px;
+    margin-left: 253px;
+}
+.frame-hpbar-block {
+    background-color: green;
+    border-radius: 10px;
+    height: 18px;
+    width: 511px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgba(31,122,43,1);
+    background: -moz-linear-gradient(45deg, rgba(31,122,43,1) 0%, rgba(57,184,61,1) 51%, rgba(51,117,68,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(31,122,43,1)), color-stop(51%, rgba(57,184,61,1)), color-stop(100%, rgba(51,117,68,1)));
+    background: -webkit-linear-gradient(45deg, rgba(31,122,43,1) 0%, rgba(57,184,61,1) 51%, rgba(51,117,68,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(31,122,43,1) 0%, rgba(57,184,61,1) 51%, rgba(51,117,68,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(31,122,43,1) 0%, rgba(57,184,61,1) 51%, rgba(51,117,68,1) 100%);
+    background: linear-gradient(45deg, rgba(31,122,43,1) 0%, rgba(57,184,61,1) 51%, rgba(51,117,68,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f7a2b', endColorstr='#337544', GradientType=1 );
+}
+.frame-mpbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-top: 220px;
+    margin-left: 253px;
+}
+.frame-mpbar-block {
+    background-color: green;
+    border-radius: 10px;
+    height: 18px;
+    width: 511px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgba(22,222,222,1);
+    background: -moz-linear-gradient(45deg, rgba(22,222,222,1) 0%, rgba(57,104,184,1) 51%, rgba(31,219,219,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(22,222,222,1)), color-stop(51%, rgba(57,104,184,1)), color-stop(100%, rgba(31,219,219,1)));
+    background: -webkit-linear-gradient(45deg, rgba(22,222,222,1) 0%, rgba(57,104,184,1) 51%, rgba(31,219,219,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(22,222,222,1) 0%, rgba(57,104,184,1) 51%, rgba(31,219,219,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(22,222,222,1) 0%, rgba(57,104,184,1) 51%, rgba(31,219,219,1) 100%);
+    background: linear-gradient(45deg, rgba(22,222,222,1) 0%, rgba(57,104,184,1) 51%, rgba(31,219,219,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#16dede', endColorstr='#1fdbdb', GradientType=1 );
 }

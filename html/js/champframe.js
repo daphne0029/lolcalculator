@@ -7,21 +7,46 @@
   lolcalculator.FrameView = function(){
     var view = `<div class="frame-view">`
     view += `<div class="bgframe">`;
-    view += display_championicon();
-    view += `<div class="frame-img">`;
-    view += display_level();
-    view += display_role();
-    view += display_trinket();
-    view += display_recall();
-    view += display_spells();
-    view += display_summoner_spell();
-    view += item();
+      view += display_championicon();
+      view += display_level();
+      view += display_role();
+      view += display_trinket();
+      view += display_recall();
+      // view += display_spells();
+      view += display_passive();
+      view += display_ability();
+      view += display_summoner_spell();
+      view += item();
+      view += display_hpbar();
+      view += display_mpbar();
+      view += `<div class="frame-img">`;
+        view += purchase_btn();
     view += `</div></div></div>`;// close class="bgframe" class="frame-img" AND class="frame-view"
     return view;
   };
 
   lolcalculator.FrameEvents = function(){
 
+  };
+
+  function display_hpbar(){
+    var view = `
+    <div class="frame-hpbar">
+      <div class="frame-hpbar-block">
+      </div>
+    </div>
+    `;
+    return view;
+  };
+
+  function display_mpbar(){
+    var view = `
+    <div class="frame-mpbar">
+      <div class="frame-mpbar-block">
+      </div>
+    </div>
+    `;
+    return view;
   };
 
   function display_summoner_spell(){
@@ -90,25 +115,31 @@
     return view;
   };
 
-  function display_spells(){
+  function display_passive(){
     var passive = lolcalculator.data.currentChampObj.champpassives;
-    var spells = JSON.parse(lolcalculator.data.currentChampObj.champspells.data);
-    var abilitytable = ["P","Q","W","E","R"];
-    var view = `<div class="frame-spells">
-    <div class="frame-spells-passive">
-      <div class="frame-spell-indi">
-        <img class="frame-spell-P-img" src="/assets/Ability/${data.currentChampID}-P.png" alt="${passive.name}">
+    var view = `
+    <div class="frame-passive">
+      <div class="frame-passive-indi">
+        <img class="frame-passive-img" src="/assets/Ability/${data.currentChampID}-P.png" alt="${passive.name}">
       </div>
     </div>`;
-    view += `<div class="frame-spells-ability">`;
-    for(var i=1; i<abilitytable.length; ++i){
-      view += `<div class="frame-spell-indi">
-          <img class="frame-spell-img" src="/assets/Ability/${data.currentChampID}-${abilitytable[i]}.png" alt="${spells[i-1]}">
-        </div>`;
-    };
-    view += `</div></div>`;
     return view;
   };
+
+  function display_ability(){
+    var spells = JSON.parse(lolcalculator.data.currentChampObj.champspells.data);
+    var abilitytable = ["Q","W","E","R"];
+    var view = "";
+    view += `<div class="frame-ability">`;
+    for(var i=0; i<abilitytable.length; ++i){
+      view += `<div class="frame-spell-indi">
+          <img class="frame-ability-img" src="/assets/Ability/${data.currentChampID}-${abilitytable[i]}.png" alt="${spells[i]}">
+        </div>`;
+    };
+    view += `</div>`;
+    return view;
+  };
+
   function item(){
     var view = `<div class="frame-items">`;
 
@@ -128,16 +159,19 @@
     };
     view +=`</div>`; //class="frame-items-six-blocks"
 
-    //buy button
+    view += `</div>`;//class="frame-items"
+    return view;
+  };
+
+  function purchase_btn(){
+    var view = "";
     view += `<div class="frame-items-purchase">
       <div onclick="lolcalculator.itemPurchasModal()" class="frame-items-purchase-button">Purchase Items
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
       </div>
     </div>`;
-
-    view += `</div>`;//class="frame-items"
     return view;
-  };
+  }
 
   lolcalculator.itemPurchasModal = function(){
     addItemPurchaseModal();
@@ -228,6 +262,7 @@
     Event_ClearAll();
     return true;
   };
+
   lolcalculator.allowDrop = function(ev) {
       ev.preventDefault();
   };
@@ -269,8 +304,9 @@
     return view;
   };
 
-  function generateHTMLofchosenItem(){
+  lolcalculator.generateHTMLofchosenItem = function(){
     var chosen_item = lolcalculator.championModel.data.item_list;
+    console.log("Chosen item =====",chosen_item);
     var path = "";
     var view = "";
     //remove existing img on frame
@@ -285,7 +321,7 @@
     return true;
   };
 
-  function Event_DisplayChosenItemOnFrame(chosen_item){
+  function SaveChosenItemOnFrame(chosen_item){
     var path = "";
     var view = "";
     var fullItemList = lolcalculator.data.DBdata.items;
@@ -309,7 +345,7 @@
         lolcalculator.championModel.data.item_stats.push(tmp_stats);
       });
     };
-    generateHTMLofchosenItem();
+
     return true;
   };
 
@@ -329,9 +365,10 @@
         tmp_id = $(".chosen-items-block").children(".item-purchase-icon").eq(i).attr("alt");
         chosen_item.push(tmp_id);
       };
-      Event_DisplayChosenItemOnFrame(chosen_item);
+      SaveChosenItemOnFrame(chosen_item);
+      lolcalculator.generateHTMLofchosenItem();
+      lolcalculator.SaveData2Hash();
     });
-
     return true;
   };
 

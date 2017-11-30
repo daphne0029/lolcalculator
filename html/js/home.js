@@ -16,7 +16,7 @@
           <div class="description">
             Select a champion to start calculation
           </div>
-        </div>`
+        </div>`;
 
     var index = 0;
     //console.log("sample = " + data.samplechamp);
@@ -28,7 +28,7 @@
         <img class="champicons" src="/assets/ChampionIcon/${champid}.png" alt="${champname}">
         <p class="champname">${champname}</p>
       </div>`;
-    }
+    };//close for
 
       view += `</div>
     </div>`
@@ -45,6 +45,7 @@
         data.currentChampID = $(this).attr('id').replace('listchamp_','');
         data.currentChampName = $(".champicons",this).attr("alt");
         lolcalculator.spawnCalculator();
+        lolcalculator.SaveData2Hash();
         console.log('going to calculation page, PAGE '+ data.currentChampName + data.currentChampID);
       });
     });

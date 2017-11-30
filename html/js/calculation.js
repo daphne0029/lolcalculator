@@ -19,7 +19,7 @@
       level = parseFloat(level);
       var finalstats = 0;
       finalstats = base + growth*(level-1)*(0.685+0.0175*level);
-      return finalstats.toFixed(2);
+      return parseFloat(finalstats.toFixed(2));
     },
   };
 
@@ -30,7 +30,7 @@
       level = parseFloat(level);
       var finalstats = 0;
       finalstats = base + growth*(level-1)*(0.685+0.0175*level);
-      return finalstats.toFixed(3);
+      return parseFloat(finalstats.toFixed(3));
     },
     MPbylevel :function(base,growth,level){
       base = parseFloat(base);
@@ -38,7 +38,7 @@
       level = parseFloat(level);
       var finalstats = 0;
       finalstats = base + growth*(level-1)*(0.685+0.0175*level);
-      return finalstats.toFixed(3);
+      return parseFloat(finalstats.toFixed(3));
     },
   };
 
@@ -49,7 +49,7 @@
       level = parseFloat(level);
       var finalstats = 0;
       finalstats = base + growth*(level-1)*(0.685+0.0175*level);
-      return finalstats.toFixed(1);
+      return parseFloat(finalstats.toFixed(1));
     },
     MPbyLevel : function(base,growth,level){
       base = parseFloat(base);
@@ -57,7 +57,7 @@
       level = parseFloat(level);
       var finalstats = 0;
       finalstats = base + growth*(level-1)*(0.685+0.0175*level);
-      return finalstats.toFixed(1);
+      return parseFloat(finalstats.toFixed(1));
     },
     ArmorbyLevel : function(base,growth,level){
       base = parseFloat(base);
@@ -65,7 +65,7 @@
       level = parseFloat(level);
       var finalArmor = 0;
       finalArmor = base + growth*level;
-      return finalArmor.toFixed(1);
+      return parseFloat(finalArmor.toFixed(1));
     },
     MRbyLevel : function(base,growth,level){
       base = parseFloat(base);
@@ -73,7 +73,7 @@
       level = parseFloat(level);
       var finalMP = 0;
       finalMP = base + growth*level;
-      return finalMP.toFixed(1);
+      return parseFloat(finalMP.toFixed(1));
     }
   };
 
@@ -82,19 +82,21 @@ lolcalculator.lib.calculation.attackspeed = {
     offset = parseFloat(offset);
     growth = parseFloat(growth);
     level = parseFloat(level);
+    itembonus = parseFloat(itembonus);
     var finalAS = 0;
     var levelbonus = 0;
     var baseAS = 0;
     baseAS = this.BaseAttackSpeed(offset);
     levelbonus = this.bonusASbyLevel(growth,level);
     finalAS = baseAS + (baseAS * (levelbonus+itembonus));
-    return finalAS.toFixed(3);
+    console.log(finalAS);
+    return parseFloat(finalAS.toFixed(3));
   },
   BaseAttackSpeed : function(offset){
     offset = parseFloat(offset);
     var baseAS = 0;
     baseAS = 0.625/(1+offset);
-    return baseAS.toFixed(3);
+    return parseFloat(baseAS.toFixed(3));
   },
   ASbyLevel : function(offset,growth,level){
     offset = parseFloat(offset);
@@ -107,14 +109,14 @@ lolcalculator.lib.calculation.attackspeed = {
     bonusAS = this.bonusASbyLevel(growth,level,baseAS);
     finalAS = baseAS + (baseAS*bonusAS);
     console.log("finalAS = " + finalAS);
-    return finalAS.toFixed(3);
+    return parseFloat(finalAS.toFixed(3));
   },
   bonusASbyLevel : function(growth,level){
     growth = parseFloat(growth);
     level = parseFloat(level);
     var bonusAS;
     bonusAS = growth*(7/400*(Math.pow(level,2)-1)+267/400*(level-1));
-    return bonusAS.toFixed(3);
+    return parseFloat(bonusAS.toFixed(3));
   }
 };
 

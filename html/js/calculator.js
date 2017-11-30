@@ -67,11 +67,30 @@
     view += `</div>`;
     view += lolcalculator.buildFooterView();
 
-    lolcalculator.Calculatorevents(champObject);
     $('#'+config.appContainerId).empty();
     $('#'+config.appContainerId).html(view);
+    lolcalculator.Calculatorevents(champObject);
     $(".championbackground").css("background-image", imagpath);
 
+    //--------------------------------------------------------------
+    //If Preset Value (from Hash) exist, then update view
+    var level = 1;
+    if(lolcalculator.data['Hasdefault']){
+      level = lolcalculator.championModel.data.level;
+      //Runes is modified when building view
+      lolcalculator.generateHTMLofchosenItem();
+    };
+    lolcalculator.calculatestats(level,champObject.champstats);
+    Set_view(); //origin level is 1, so it is fine to have this here
+    //--------------------------------------------------------------
+  };
+
+  function Set_view(){
+    var level = lolcalculator.championModel.data.level;
+    var champObject = lolcalculator.data.currentChampObj;
+    console.log("Set LLLLLevellllll", level);
+    lolcalculator.updatebasicstats(level,champObject);
+    $(".dropbtn").html("Level "+level);
   };
 
     lolcalculator.Calculatorevents = function(champObject){
@@ -80,6 +99,13 @@
         $('.reselectbutton').click(function(){
           lolcalculator.spawnHome();
           console.log("going to home page");
+          //Clear ChampModel and selected runes
+          lolcalculator.ResetSelectedRunes();
+          lolcalculator.championModel.reset();
+          //reset Hash because we are chosing new champ
+          //also set Hashdefault = flase, cuz we are dealing with new champbuild
+          window.location.hash = "";
+          lolcalculator.data["Hasdefault"] = false;
         });
         $('.ablility-indi').mouseenter(function(){
           $('.ability-description-block').fadeIn();
@@ -99,25 +125,35 @@
           $('.ability-discription-text').html("").hide();
         });
         $('.dropbtn').click(function(){
-          console.log("Button clicked");
           $("#leveldropdown").toggle();
         });
         window.onclick = function(event){
           if(!event.target.matches('.dropbtn')){
               $("#leveldropdown").hide();
-          }
+          };
         };
-        $("[herf^='#Level']").click(function(){
-          var level = $(this).attr('herf').replace('#Level','');
-          console.log("Level " + level + "Chosen");
-          lolcalculator.updatebasicstats(level,champObject);
-          $(".dropbtn").html("Level "+level);
-          $(".frame-level-bubble").html(level);
-          $("#leveldropdown").hide();
+        $("[herf^='#Level']").each(function(){
+          $(this).click(function(){
+            var level = $(this).attr('herf').replace('#Level','');
+            lolcalculator.updatebasicstats(level,champObject);
+            $(".dropbtn").html("Level "+level);
+            $(".frame-level-bubble").html(level);
+            $("#leveldropdown").hide();
+            lolcalculator.SaveData2Hash();
+          });
         });
         lolcalculator.runesEvents();
         lolcalculator.FrameEvents();
         lolcalculator.SummaryEvents();
+      });
+    };
+
+    lolcalculator.ResetSelectedRunes = function(){
+      var tag = ['mark','glyph','seal','quint'];
+      tag.forEach((e)=>{
+        lolcalculator.data.selectedRunes.runestats[e] = {};
+        lolcalculator.data.selectedRunes.runesquantity[e] = {};
+        lolcalculator.data.selectedRunes.runeserrorFlag[e] = 1;
       });
     };
 
