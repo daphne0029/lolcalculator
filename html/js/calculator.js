@@ -47,7 +47,9 @@
 
     var view = lolcalculator.buildHeaderView('Calculator');
     view += `<div class="body">
-        <button class="reselectbutton">Re-select a Champion</button>
+        <button class="reselectbutton">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Reselect a Champion</button>
         <div class="championprofile">
           <div class="championbackground">
             <div class="shadowblock">

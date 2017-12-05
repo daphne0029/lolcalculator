@@ -23,6 +23,49 @@
       ],
       item_list : [],
     },
+    get MagicPen() {
+      var totalMagicPen = 0;
+      totalMagicPen = this.itemsMagicPen + this.runesMagicPen_all;
+      return totalMagicPen;
+    },
+    get runesMagicPen_all(){
+      //FlatPhysicalDamageMod ,  PercentPhysicalDamageMod   FlatPhysicalDamageModPerLevel
+      //There's no percentAD in runes
+      return this.data.runes.reduce((c,e)=>{
+        var flatMagicPen = (e.FlatMagicPenetrationMod) ? e.FlatMagicPenetrationMod : 0 ;
+        return c+flatMagicPen;
+      },0);
+    },
+    runesMagicPen : function(tag){
+      //FlatPhysicalDamageMod ,  PercentPhysicalDamageMod   FlatPhysicalDamageModPerLevel
+      //There's no percentAD in runes
+      return this.data.runes.reduce((c,e)=>{
+        var flatMagicPen;
+        if(e.type === tag){
+          flatMagicPen = (e.FlatMagicPenetrationMod) ? e.FlatMagicPenetrationMod : 0 ;
+        }else{
+          flatMagicPen = 0;
+        }
+        return c+flatMagicPen;
+      },0);
+    },
+    get itemsMagicPen(){
+      return this.data.item_stats.reduce((c,e)=>{
+        var flatMagicPen = (e.FlatMagicPen) ? e.FlatMagicPen : 0 ;
+        return c+flatMagicPen;
+      },0);
+    },
+    get Lethality() {
+      var totalLethality = 0;
+      totalLethality = this.itemsLethality;
+      return totalLethality;
+    },
+    get itemsLethality(){
+      return this.data.item_stats.reduce((c,e)=>{
+        var Lethality = (e.Lethality) ? e.Lethality : 0 ;
+        return c+Lethality;
+      },0);
+    },
     get AD() {
       var totalAd = 0;
       totalAd = parseInt(this.data.baseStats['Attack-Damage'],10) + this.runesAD_all + this.itemsAD;

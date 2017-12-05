@@ -5,17 +5,23 @@
   display: block;
   margin: 0 auto;
 }
-.reselectbutton{
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 20px;
-  margin-left: 20px;
+.reselectbutton {
+    background-color: #a02020;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    color: bisque;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;
+    outline: none;
+}
+.reselectbutton:active {
+    transform: translateY(4px);
 }
 .shadowblock{
   position: relative;
@@ -186,7 +192,7 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    max-width: 160px;
+    width: 105px;
     max-height: 220px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -201,6 +207,7 @@
     cursor: pointer;
     height: 30px;
     border-radius: 7px;
+    outline: none;
 }
 .champstats-dropdown .dropdown-content a {
     color: black;

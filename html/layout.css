@@ -6,15 +6,28 @@ body {
 /**************************** Header *****************************/
 
 .header {
-  height: 165px;
-  background-color: #4881ea; /*yellow*/
+    background-color: #deb886;
+    color: brown;
+    font-family: 'Caudex';
 }
 .header h1 {
-  margin: 0 auto;
-  text-align: center;
-  line-height: 100px;
-  font-size: 70px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 100px;
+    font-size: 70px;
+}
+.header h2 {
+    border-top-width: 8px;
+    border-left-style: none;
+    border-right-style: none;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 67px;
+    font-size: 40px;
+    border-top-color: chocolate;
+    border-top-style: ridge;
+    background: maroon;
+    color: darkkhaki;
 }
 
 .menu{
@@ -44,6 +57,6 @@ body {
 
 /**************************** footer *****************************/
 .footer {
-  height: 150px;
-  background-color: #4881ea ; /*purple*/
+  height: 75px;
+  background-color: #deb886 ; /*purple*/
 }

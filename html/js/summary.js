@@ -96,6 +96,8 @@
       "AS" : [Model.baseAS,Math.round(Model.runesAS_all*100),Model.itemsAS*100],
       "MS" : [Model.baseMS,0,Model.itemsMS*100],
       "Crit_Chance" : [Model.baseCrit_Chance,Model.runesCrit_Chance_all*100,Model.itemsCrit_Chance*100],
+      "Lethality" : [0,0,Model.itemsLethality],
+      "Magic_Penetration" : [0,Model.runesMagicPen_all,Model.itemsMagicPen],
     };
     //Displat note:
     //  Base AS NOT in %, but item and rune in % form
@@ -168,6 +170,16 @@
       <div class="summary-stats-row" id="summary-MR">
         <div class="summary-stats-col1">Magic Resist</div>
         <div class="summary-stats-col2">${Math.round(lolcalculator.championModel.MR)}</div>
+        <div class="summary-stats-col3"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+      </div>
+      <div class="summary-stats-row" id="summary-Lethality">
+        <div class="summary-stats-col1">Lethality</div>
+        <div class="summary-stats-col2">${Math.round(lolcalculator.championModel.Lethality)}</div>
+        <div class="summary-stats-col3"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
+      </div>
+      <div class="summary-stats-row" id="summary-Magic_Penetration">
+        <div class="summary-stats-col1">Magic Penetration</div>
+        <div class="summary-stats-col2">${Math.round(lolcalculator.championModel.MagicPen)}</div>
         <div class="summary-stats-col3"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></div>
       </div>
     </div>

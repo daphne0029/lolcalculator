@@ -6,6 +6,16 @@
     width: 1215px;
     margin: 0 auto;
 }
+.runes-title {
+    font-size: 35px;
+    color: burlywood;
+    text-align: center;
+}
+.runes-description {
+    font-size: 19px;
+    color: burlywood;
+    padding-left: 90px;
+}
 .runes-section {
     width: 25%;
     display: inline-block;
@@ -52,6 +62,7 @@
   position: absolute;
   margin-top: -38px;
   margin-left: 75px;
+  color: bisque;
 }
 .runes-img-icon{
   max-width: 50px;
@@ -68,7 +79,7 @@
 }
 .runes-section-stats {
     background-color: rgba(0, 0, 0,0.8);
-    font-size: 20px;
+    font-size: 17px;
     text-align: center;
     height: 123px;
 }

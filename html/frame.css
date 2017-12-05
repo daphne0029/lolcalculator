@@ -237,6 +237,7 @@ active {
 .chosen-items {
     display: inline-block;
     float: left;
+    position: relative;
 }
 .chosen-items-block {
     height: 59px;
@@ -256,6 +257,18 @@ active {
     margin-left: 30px;
     color: burlywood;
     margin-right: 60px;
+}
+.chosen-items-description-detail {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 15px;
+    margin-left: 30px;
+    color: aqua;
+    display: inline-block;
+    float: left;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 /*Display Level*/
 .frame-level {

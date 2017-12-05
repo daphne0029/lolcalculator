@@ -12,9 +12,9 @@
     <div class="body">
       <div class="champselect">
         <div class="instruction">
-          <div class="title">Step 1 </div>
+          <div class="title"></div>
           <div class="description">
-            Select a champion to start calculation
+            Select a champion
           </div>
         </div>`;
 

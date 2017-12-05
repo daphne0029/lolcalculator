@@ -290,6 +290,7 @@
     var chosenItem = lolcalculator.championModel.data.item_list;
     view += `<div class="chosen-items">`;
     view += `<div class="chosen-items-description">Drop items here</div>`;
+    view += `<div class="chosen-items-description-detail">Right click to clear items</div>`;
     for(var i=0;i<6;++i){
       view += `<div class="chosen-items-block" ondrop="lolcalculator.drop(event)"
       ondragover="lolcalculator.allowDrop(event)" id="chosen${i+1}">`;
@@ -336,7 +337,7 @@
       chosen_item_object[i] = fullItemList.find((e)=>{
         return e.ID == chosen_item[i];
       });
-      var stats = JSON.parse(chosen_item_object[i].stats);
+      var stats = ManualStatsAdder(chosen_item_object[i]);
       var tmp_stats = {};
       Object.keys(stats).forEach((e,i)=>{
         //push one by one to item_stats
@@ -347,6 +348,20 @@
     };
 
     return true;
+  };
+
+  function ManualStatsAdder(itemObj){
+    var stats = JSON.parse(itemObj.stats);
+    var addOns = lolcalculator.ManualStatsOnItems;
+    Object.keys(addOns).forEach((e)=>{
+      var id = e.replace('item-','');
+      if(parseInt(itemObj.ID,10) == id){
+        var type = Object.keys(addOns[e])[0];
+        var amount = addOns[e][type];
+        stats[type] = amount;
+      };
+    });
+    return stats;
   };
 
   function Event_ClearAll(){
