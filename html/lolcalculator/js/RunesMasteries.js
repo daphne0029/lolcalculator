@@ -148,7 +148,7 @@
         }
       });
       view += `<div class="runeimg-display">
-      <img class="runes-img-icon" src="${elem.path}" alt="blank.png" field="${field}">
+      <img class="runes-img-icon" src="/${elem.path}" alt="blank.png" field="${field}">
       <div class="runes-img-title">${data.DBdata.runes[key].name}</div>
       <div class="runes-img-description">${data.DBdata.runes[key].description}</div>
       </div>`;

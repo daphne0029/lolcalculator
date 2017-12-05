@@ -46,7 +46,7 @@
     view += `<div class="summary-item-data">`;
     itemList.forEach((e)=>{
       path = "assets/Items/" + e + ".png";
-      view += `<img class="summary-itemd-data-icon" src="${path}" alt=${e}>`;
+      view += `<img class="summary-itemd-data-icon" src="/${path}" alt=${e}>`;
     });
     view += `</div>`;
     view += `</div>`;

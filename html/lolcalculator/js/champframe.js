@@ -296,7 +296,7 @@
       ondragover="lolcalculator.allowDrop(event)" id="chosen${i+1}">`;
       if(chosenItem.length>i){
         path = "assets/Items/" + chosenItem[i] + ".png";
-        view += `<img class="item-purchase-icon" src="${path}" alt=${chosenItem[i]}>`;
+        view += `<img class="item-purchase-icon" src="/${path}" alt=${chosenItem[i]}>`;
       };
       view += `</div>`;
     };
@@ -315,7 +315,7 @@
     //Generate code for the most recent list
     for(var i=0; i<chosen_item.length; ++i){
       path = "assets/Items/" + chosen_item[i] + ".png";
-      view = `<img class="frame-items-indi-icon" src="${path}" alt=${chosen_item[i]}>`
+      view = `<img class="frame-items-indi-icon" src="/${path}" alt=${chosen_item[i]}>`
       $(`#items-purchase-block-${i+1}`).append(view);
     };
 
@@ -501,7 +501,7 @@
     selectedITEMS.forEach((e)=>{
       path = "assets/Items/" + e.ID + ".png";
       view += `<div class="item-purchase-icon-block">
-      <img id="item-${e.ID}" class="item-purchase-icon" src="${path}" alt=${e.ID} draggable="true" ondragstart="lolcalculator.drag(event)">
+      <img id="item-${e.ID}" class="item-purchase-icon" src="/${path}" alt=${e.ID} draggable="true" ondragstart="lolcalculator.drag(event)">
       </div>`;
     });
 

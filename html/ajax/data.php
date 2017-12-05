@@ -1,5 +1,5 @@
 <?php
-include "../../includes/global.inc";
+include "../../includes/lolcalculator.global.inc";
 include INCLUDE_PATH . "/dataService.inc";
 
 $response = array(

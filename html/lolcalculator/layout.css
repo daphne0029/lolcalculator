@@ -47,7 +47,7 @@ body {
 
 .body {
   height: 2500px;
-  background-image: url(./assets/background/summonersrift.jpg);
+  background-image: url(../assets/background/summonersrift.jpg);
   background-color: black;
   background-repeat: no-repeat;
   background-position: center top;

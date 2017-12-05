@@ -43,7 +43,7 @@
     var champObject = lolcalculator.getChampionData(data.currentChampID);
     lolcalculator.data.currentChampObj = champObject;
     var role = lolcalculator.roledefine(JSON.parse(champObject.champgeninfo.info));
-    var imagpath = "url(./assets/ChampionProfile/" + data.currentChampID + ".jpg)";
+    var imagpath = "url(../assets/ChampionProfile/" + data.currentChampID + ".jpg)";
 
     var view = lolcalculator.buildHeaderView('Calculator');
     view += `<div class="body">
