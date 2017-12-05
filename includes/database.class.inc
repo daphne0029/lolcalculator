@@ -4,8 +4,6 @@ if (!class_exists('Database')) {
 reference : http://culttt.com/2012/10/01/roll-your-own-pdo-php-class/
     customized features were added
 **********************************************/
-require('lolcalculator.global.inc');
-
 class Database {
     private $host = DB_HOST;
     private $user = DB_USER;

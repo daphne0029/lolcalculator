@@ -4,6 +4,7 @@
 ######################
 index.html
 includes/config.inc
+includes/*.config.inc
 test_*.php
 test_*.txt
 old_*.php
