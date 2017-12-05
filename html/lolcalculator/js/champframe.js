@@ -66,7 +66,7 @@
     var view = "";
     view += `<div class="frame-recall">`;
     view += `<div class="frame-recall-block">`;
-    view += `<img class="frame-recall-img" src="/assets/frame/${imgName}.png" alt="${imgName}.png">`;
+    view += `<img class="frame-recall-img" src="/assets/Frame/${imgName}.png" alt="${imgName}.png">`;
     view += `</div>`;
     view += `</div>`;
     return view;
@@ -77,7 +77,7 @@
     var view = "";
     view += `<div class="frame-trinket">`;
     view += `<div class="frame-trinket-block">`;
-    view += `<img class="frame-trinket-img" src="/assets/items/${itemID}.png" alt="${itemID}.png">`;
+    view += `<img class="frame-trinket-img" src="/assets/Items/${itemID}.png" alt="${itemID}.png">`;
     view += `</div>`;
     view += `</div>`;
     return view;

@@ -3,7 +3,7 @@
 }(function(lolcalculator){
   var config = {
     appContainerId : "default_app_container",
-    apiURL : ""
+    apiURL : "/ajax/data.php"
   };
   var data = {
     Hasdefault : false,
@@ -85,7 +85,6 @@
 
   lolcalculator.boot = function(cfg) {
     lolcalculator.loadConfig(cfg);
-    config.apiURL = cfg.apiURL;
     console.log('booting...');
     console.log('initializing...');
     console.log('getting data from DB...');
