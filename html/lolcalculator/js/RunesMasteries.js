@@ -169,7 +169,7 @@
   $(".runeimg-display .runes-img-icon").click(function(){
     var field = $(this).attr('field');
     var srcpath = $(this).attr('src');
-    var imgname = $(this).attr('src').replace('assets/Runes/','')
+    var imgname = $(this).attr('src').replace('/assets/Runes/','')
     $(`#section-img-${tag}-${field} .runes-img-icon`).attr('src',srcpath);
     $(`#section-img-${tag}-${field} .runes-img-icon`).attr('alt',imgname);
     $("#myModal").remove();
@@ -192,7 +192,7 @@
       if( e.button == 2 ) {
         var oriIMG = $(this).attr('alt');
         if(oriIMG != "blank.png"){
-          $(this).attr('src','assets/Runes/blank.png');
+          $(this).attr('src','/assets/Runes/blank.png');
           $(this).attr('alt','blank.png');
           //reset input number
           $(this).siblings('.amount-input').val("").keyup();

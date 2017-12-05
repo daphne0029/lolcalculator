@@ -2,7 +2,6 @@
 
 # Repository #
 ######################
-index.html
 includes/config.inc
 includes/*.config.inc
 test_*.php
