@@ -2,6 +2,7 @@
 
 # Repository #
 ######################
+index.html
 includes/config.inc
 test_*.php
 test_*.txt
