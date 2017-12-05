@@ -14,7 +14,8 @@
 .runes-description {
     font-size: 19px;
     color: burlywood;
-    padding-left: 90px;
+    width: 1215px;
+    margin: auto;
 }
 .runes-section {
     width: 25%;
